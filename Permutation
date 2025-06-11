@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+
+int n;
+int x[100];       // x[i] là phần tử tại vị trí i
+bool used[100];   // used[i] = true nếu phần tử i đã dùng
+
+void hoanvi(int k) {
+    for (int i = 1; i <= n; i++) {
+        if (!used[i]) {
+            x[k] = i;
+            used[i] = true;
+            if (k == n) {
+                for (int j = 1; j <= n; j++)
+                    cout << x[j] << " ";
+                cout << endl;
+            } else
+                hoanvi(k + 1);
+            used[i] = false; // quay lui
+        }
+    }
+}
+
+int main() {
+    cout << "Nhap n = ";
+    cin >> n;
+    hoanvi(1);
+    return 0;
+}
